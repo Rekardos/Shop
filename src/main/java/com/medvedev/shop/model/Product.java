@@ -1,4 +1,4 @@
-package com.medvedev.shop.entityes;
+package com.medvedev.shop.model;
 
 import lombok.Data;
 
@@ -6,12 +6,11 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public abstract class Product {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
-
+    Long id;
 
     String name;
 

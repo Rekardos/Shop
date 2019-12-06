@@ -1,4 +1,4 @@
-package com.medvedev.shop.entityes;
+package com.medvedev.shop.model;
 
 
 import lombok.Data;
