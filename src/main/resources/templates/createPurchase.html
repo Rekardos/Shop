@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Заказы</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+
+    <h2>Новый заказ</h2>
+
+    <form th:action="@{/newCreatePurchase}" method="post">
+        <table>
+            <tr>
+                <th>Имя покупателя</th>
+                <th>Фамилия покупателя</th>
+                <th>Возраст</th>
+                <th>Колличество товаров</th>
+                <th>Сумма заказа</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="name"/></td>
+                <td><input type="text" name="lastName"/></td>
+                <td><input type="text" name="age"></td>
+                <td><input type="text" name="count"></td>
+                <td><input type="text" name="amount"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Создать"/>
+    </form>
+
+    <p><a th:href="@{/purchase}">Назад</a></p>
+</body>
+</html>

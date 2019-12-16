@@ -1,28 +1,21 @@
-create table customer
+
+create table  purchase
 (
-	id bigint not null
-		constraint customer_pkey
+	id serial not null
+		constraint purchase_pkey
 			primary key,
-	age integer not null,
+    age integer not null,
 	last_name varchar(255),
-	name varchar(255)
-);
-
-
-create table  orders
-(
-	id bigint not null
-		constraint orders_pkey
-			primary key,
+	name varchar(255),
 	amount real not null,
 	count integer not null,
-	purchase_date timestamp
+	purchase_date date default current_date
 );
 
 
 create table  product
 (
-	id bigint not null
+	id serial not null
 		constraint product_pkey
 			primary key,
 	name varchar(255),
@@ -30,13 +23,12 @@ create table  product
 );
 
 
-
-create table  orders_products
+create table  products_purchases
 (
-	orders_id bigint not null
-		constraint fk_Order
-			references orders,
-	products_id bigint not null
+	purchase_id bigint not null
+		constraint fk_Purchase
+			references purchase,
+	product_id bigint not null
 		constraint fk_Product
 			references product
 );

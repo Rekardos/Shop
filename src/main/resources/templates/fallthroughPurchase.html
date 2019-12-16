@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Товары</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выйти"/>
+</form>
+<h2>Товары заказа</span></h2>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Цена</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td><span th:text="${product.name}"></span></td>
+        <td><span th:text="${product.price}"></span></td>
+    </tr>
+</table>
+<p><a th:href="@{/purchase}">Назад</a></p>
+</body>
+</html>
