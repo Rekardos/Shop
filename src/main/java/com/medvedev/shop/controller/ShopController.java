@@ -41,7 +41,7 @@ public class ShopController  {
 
 
 
-    @RequestMapping("/purchase")
+    @RequestMapping("/purchases")
     public String getAllPurchase (Model model) {
         List<Purchase> purchases = purchaseService.findAll();
         model.addAttribute("purchases",purchases);
@@ -55,71 +55,54 @@ public class ShopController  {
         return "products";
     }
 
-    @RequestMapping("/basket")
-    public String fallthroughBasket (Model model, @RequestParam(name = "id") Long id) {
+    @RequestMapping("/fallthroughPurchase")
+    public String fallthroughPurchase (Model model, @RequestParam(name = "id") Long id) {
         List<Product> products = productService.findProductToPurchase(id);
         model.addAttribute("products",products);
         return "fallthroughPurchase";
     }
 
-    @RequestMapping("/productsWeek")
-    public String productsWeek (Model model) {
-        List<Product> products = productService.findAll();
-        model.addAttribute("products",products);
-        return "products";
-    }
 
-    //-----------------
-    //CRUD Purchase
-    //-----------------
+
+
     @RequestMapping("/deleteById")
-    public String deleteById (@RequestParam(name = "id") Long id) {
+    public String deletePurchaseById (@RequestParam(name = "id") Long id) {
         purchaseService.deleteById(id);
         return "redirect:purchase";
     }
 
 
 
-    @RequestMapping("/createPurchase")
-    public String newCreatePurchase () {
+    @RequestMapping("/createPurchaseView")
+    public String createPurchaseView () {
         return "createPurchase";
     }
 
-    @RequestMapping(value = "/newCreatePurchase",method = RequestMethod.POST)
+    @RequestMapping(value = "/createPurchase",method = RequestMethod.POST)
     public String createPurchase (
             @RequestParam(name = "name") String name,
             @RequestParam(name = "lastName") String lastName,
             @RequestParam(name = "age") int age,
             @RequestParam(name = "count") int count,
             @RequestParam(name = "amount") float amount) {
+
         purchaseService.create(name,lastName,age,count,amount);
-        return "redirect:purchase";
+        return "redirect:purchases";
     }
 
 
-
-
     @RequestMapping("/updateById")
-    public String updateById (Model model,@RequestParam(name = "id") Long id) {
+    public String updatePurchaseById (Model model, @RequestParam(name = "id") Long id) {
         Purchase purchase = purchaseService.findById(id);
         model.addAttribute("purchase",purchase);
-        return "updateAndPurchase";
+        return "updatePurchase";
     }
 
 
     @RequestMapping(value = "/updatePurchase",method = RequestMethod.POST)
-    public String updatePurchase (
-
-            @RequestParam(name = "id") Long id,
-            @RequestParam(name = "name") String name,
-            @RequestParam(name = "lastName") String lastName,
-            @RequestParam(name = "age") int age,
-            @RequestParam(name = "count") int count,
-            @RequestParam(name = "amount") float amount) {
-
-        Purchase purchase = new Purchase(id,name,lastName,age,count,amount);
-
+    public String updatePurchase (@RequestParam(name = "id") Long id, @ModelAttribute(name = "purchase") Purchase purchase){
+        purchase.setId(id);
         purchaseService.updatePurchase(purchase);
-        return "redirect:purchase";
+        return "redirect:purchases";
     }
 }

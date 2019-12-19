@@ -38,7 +38,7 @@
             <td><span th:text="${purchase.count}"></span></td>
             <td><span th:text="${purchase.amount}"></span></td>
             <td><span th:text="${purchase.purchaseDate}"></span></td>
-            <td><a th:href="@{/basket(id = ${purchase.id})}">Посмотреть</a></td>
+            <td><a th:href="@{/fallthroughPurchase(id = ${purchase.id})}">Посмотреть</a></td>
             <td><a th:href="@{/updateById(id = ${purchase.id})}">Редактировать</a></td>
             <td><a th:href="@{/deleteById(id = ${purchase.id})}">Удалить</a></td>
         </tr>

@@ -18,9 +18,9 @@
     <input type="submit" value="Выйти"/>
 </form>
 
-<h2>Редактировать заказ или Создать</h2>
+<h2>Редактировать заказ</h2>
 
-<form th:action="@{/updateAndCreatePurchase}" method="post">
+<form th:action="@{/updatePurchase(id = ${purchase.id})}" method="post" th:object="${purchase}">
     <table>
         <tr>
             <th>Имя покупателя</th>
@@ -40,6 +40,6 @@
     <input type="submit" value="Сохранить"/>
 </form>
 
-<p><a th:href="@{/purchase}">Назад</a></p>
+<p><a th:href="@{/purchases}">Назад</a></p>
 </body>
 </html>
