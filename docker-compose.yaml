@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:11
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+  boot:
+    image: springdocker
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
