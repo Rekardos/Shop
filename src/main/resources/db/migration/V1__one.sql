@@ -9,7 +9,7 @@ create table  purchase
 	name varchar(255),
 	amount real not null,
 	count integer not null,
-	purchase_date date default current_date
+	purchase_date date
 );
 
 
