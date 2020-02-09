@@ -5,6 +5,7 @@ import com.medvedev.shop.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,19 +19,15 @@ public class PurchaseService {
     }
 
     public List<Purchase> findAll() {
-        return purchaseRepository.findAll();
+        return (List<Purchase>) purchaseRepository.findAll();
     }
 
     public void deleteById(Long id) {
         purchaseRepository.deleteById(id);
     }
 
-    public void create(String name,String lastName,int age,int count,float amount) {
-        purchaseRepository.save(new Purchase(name,lastName,age,count,amount));
-    }
-
-    public void updatePurchase(Purchase purchase) {
-        purchaseRepository.findById(1L);
+    public void save(Purchase purchase) {
+        purchase.setPurchaseDate(LocalDate.now());
         purchaseRepository.save(purchase);
     }
 }
