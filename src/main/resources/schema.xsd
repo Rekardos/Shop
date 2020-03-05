@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="Product">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:integer" name="id"/>
+                <xs:element type="xs:string" name="name"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Purchase">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:string" name="lastName"/>
+                <xs:element type="xs:integer" name="age"/>
+                <xs:element type="xs:integer" name="count"/>
+                <xs:element type="xs:float" name="amount"/>
+                <xs:element name="Products">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Product" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

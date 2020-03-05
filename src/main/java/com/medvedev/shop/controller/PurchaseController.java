@@ -5,8 +5,11 @@ import com.medvedev.shop.model.Purchase;
 import com.medvedev.shop.service.PurchaseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpInputMessage;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -27,8 +30,9 @@ public class PurchaseController {
         return purchaseService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
     public void create(@RequestBody Purchase purchase) {
+        System.out.println(purchase);
         purchaseService.save(purchase);
     }
 
@@ -39,9 +43,7 @@ public class PurchaseController {
 
     @PutMapping("{id}")
     public void update(@PathVariable("id") Purchase purchaseFromDb, @RequestBody Purchase purchase) {
-
         BeanUtils.copyProperties(purchase, purchaseFromDb, "id");
-
         purchaseService.save(purchase);
     }
 

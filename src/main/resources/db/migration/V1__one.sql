@@ -9,7 +9,7 @@ create table  purchase
 	name varchar(255),
 	amount real not null,
 	count integer not null,
-	purchase_date date
+	purchase_date timestamp
 );
 
 
@@ -18,8 +18,7 @@ create table  product
 	id serial not null
 		constraint product_pkey
 			primary key,
-	name varchar(255),
-	price real not null
+	name varchar(255)
 );
 
 

@@ -1,8 +1,8 @@
-INSERT INTO product (name , price) VALUES ('Keyboard',500);
-INSERT INTO product (name , price) VALUES ('Juicer',4000);
-INSERT INTO product (name , price) VALUES ('Phone',6000);
-INSERT INTO product (name , price) VALUES ('Television',9999);
-INSERT INTO product (name , price) VALUES ('Headphones',2000);
+INSERT INTO product (name , price) VALUES ('Keyboard');
+INSERT INTO product (name , price) VALUES ('Juicer');
+INSERT INTO product (name , price) VALUES ('Phone');
+INSERT INTO product (name , price) VALUES ('Television');
+INSERT INTO product (name , price) VALUES ('Headphones');
 
 
 INSERT INTO purchase (age, last_name, name, amount, count, purchase_date) VALUES (22, 'Bon', 'Mark', 2000, 4, '2019-12-07 00:31:55.000000');
